@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BloxFR.tools — Premium Roblox Models</title>
+  <meta name="description" content="Premium Roblox models, scripts and assets by BloxFR.tools. Buy high quality Roblox models at affordable prices." />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Syne:wght@400;600;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #080b12;
+      --bg2: #0d1220;
+      --bg3: #111827;
+      --accent: #e8371b;
+      --accent2: #ff6b47;
+      --gold: #f5a623;
+      --text: #e8eaf0;
+      --muted: #6b7280;
+      --card: #0f1623;
+      --border: rgba(232, 55, 27, 0.2);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Syne', sans-serif;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* Custom cursor */
+    .cursor {
+      position: fixed;
+      width: 12px; height: 12px;
+      background: var(--accent);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.1s, width 0.2s, height 0.2s;
+      mix-blend-mode: screen;
+    }
+    .cursor-ring {
+      position: fixed;
+      width: 36px; height: 36px;
+      border: 1.5px solid rgba(232, 55, 27, 0.5);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: transform 0.15s ease, width 0.3s, height 0.3s, opacity 0.3s;
+    }
+
+    /* Grid background */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(232,55,27,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(232,55,27,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Noise overlay */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 60px;
+      background: rgba(8, 11, 18, 0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-family: 'Orbitron', monospace;
+      font-weight: 900;
+      font-size: 1.3rem;
+      letter-spacing: 0.05em;
+      color: var(--text);
+    }
+    .logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    .nav-cta {
+      background: var(--accent);
+      color: white !important;
+      padding: 10px 24px;
+      border-radius: 4px;
+      font-weight: 700 !important;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--accent2) !important; color: white !important; }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 60px 80px;
+      z-index: 2;
+      overflow: hidden;
+    }
+
+    .hero-glow {
+      position: absolute;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(232,55,27,0.12) 0%, transparent 70%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      animation: pulse 4s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
+      50% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+    }
+
+    .hero-content {
+      max-width: 700px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(232,55,27,0.1);
+      border: 1px solid rgba(232,55,27,0.3);
+      padding: 6px 16px;
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      margin-bottom: 32px;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .badge-dot {
+      width: 6px; height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: blink 1.5s ease-in-out infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .hero h1 {
+      font-family: 'Orbitron', monospace;
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+      animation: fadeUp 0.6s 0.1s ease both;
+    }
+
+    .hero h1 .line2 {
+      color: var(--accent);
+      display: block;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 520px;
+      margin-bottom: 44px;
+      animation: fadeUp 0.6s 0.2s ease both;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      animation: fadeUp 0.6s 0.3s ease both;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+      padding: 16px 36px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: all 0.2s;
+      border: 2px solid var(--accent);
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-primary::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: white;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(232,55,27,0.4); }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+      padding: 16px 36px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 2px solid rgba(255,255,255,0.15);
+      transition: all 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* STATS */
+    .stats {
+      position: absolute;
+      right: 60px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      animation: fadeUp 0.6s 0.4s ease both;
+    }
+
+    .stat-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px 28px;
+      text-align: center;
+      min-width: 140px;
+    }
+
+    .stat-num {
+      font-family: 'Orbitron', monospace;
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 6px;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* SECTION */
+    section {
+      position: relative;
+      z-index: 2;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .section-header h2 {
+      font-family: 'Orbitron', monospace;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+    }
+
+    /* SHOP */
+    .shop {
+      padding: 100px 60px;
+      background: var(--bg2);
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .product-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+      position: relative;
+    }
+
+    .product-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--accent);
+      box-shadow: 0 20px 40px rgba(232,55,27,0.15);
+    }
+
+    .product-thumb {
+      height: 180px;
+      background: linear-gradient(135deg, #0d1220 0%, #1a0a0a 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-thumb::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 50%, var(--card));
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 12px; right: 12px;
+      background: var(--accent);
+      color: white;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 100px;
+      z-index: 1;
+    }
+
+    .product-badge.gold { background: var(--gold); color: #000; }
+
+    .product-info {
+      padding: 20px;
+    }
+
+    .product-name {
+      font-family: 'Orbitron', monospace;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      letter-spacing: 0.03em;
+    }
+
+    .product-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .product-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .tag {
+      background: rgba(232,55,27,0.1);
+      border: 1px solid rgba(232,55,27,0.2);
+      color: var(--accent2);
+      font-size: 0.68rem;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 100px;
+      letter-spacing: 0.08em;
+    }
+
+    .product-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .price {
+      font-family: 'Orbitron', monospace;
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: var(--accent);
+    }
+
+    .price span {
+      font-size: 0.7rem;
+      color: var(--muted);
+      font-family: 'Syne', sans-serif;
+      font-weight: 400;
+    }
+
+    .buy-btn {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 10px 22px;
+      border-radius: 6px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: none;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .buy-btn:hover { background: var(--accent2); transform: scale(1.05); }
+
+    /* COMING SOON */
+    .coming-soon-card {
+      border: 2px dashed rgba(255,255,255,0.08);
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 300px;
+      border-radius: 12px;
+    }
+
+    .coming-soon-inner {
+      text-align: center;
+      padding: 40px;
+    }
+
+    .coming-soon-inner .icon { font-size: 2.5rem; margin-bottom: 16px; }
+    .coming-soon-inner h3 {
+      font-family: 'Orbitron', monospace;
+      font-size: 1rem;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .coming-soon-inner p { font-size: 0.8rem; color: rgba(107,114,128,0.6); }
+
+    /* FEATURES */
+    .features {
+      padding: 100px 60px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .feature-card {
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 12px;
+      padding: 32px;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .feature-card:hover {
+      border-color: rgba(232,55,27,0.3);
+      transform: translateY(-4px);
+    }
+
+    .feature-icon {
+      font-size: 2rem;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .feature-card h3 {
+      font-family: 'Orbitron', monospace;
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      letter-spacing: 0.03em;
+    }
+
+    .feature-card p {
+      font-size: 0.83rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* CONTACT */
+    .contact {
+      padding: 100px 60px;
+      background: var(--bg2);
+      text-align: center;
+    }
+
+    .contact-box {
+      max-width: 600px;
+      margin: 0 auto;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 60px 48px;
+    }
+
+    .contact-box h2 {
+      font-family: 'Orbitron', monospace;
+      font-size: 1.8rem;
+      font-weight: 900;
+      margin-bottom: 16px;
+    }
+
+    .contact-box p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 14px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 0.88rem;
+      transition: all 0.2s;
+    }
+    .contact-link:hover {
+      border-color: var(--accent);
+      background: rgba(232,55,27,0.08);
+      color: var(--accent);
+    }
+
+    /* FOOTER */
+    footer {
+      position: relative;
+      z-index: 2;
+      padding: 40px 60px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: gap;
+    }
+
+    footer .logo { font-size: 1rem; }
+
+    footer p {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    /* SCROLL ANIMATIONS */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .hero { padding: 100px 24px 60px; }
+      .stats { display: none; }
+      .hero h1 { font-size: 2.2rem; }
+      .shop, .features, .contact { padding: 70px 24px; }
+      .products-grid, .features-grid { grid-template-columns: 1fr; }
+      .contact-box { padding: 40px 24px; }
+      footer { flex-direction: column; gap: 12px; text-align: center; padding: 32px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- NAV -->
+  <nav>
+    <div class="logo">BloxFR<span>.</span>tools</div>
+    <ul class="nav-links">
+      <li><a href="#shop">Shop</a></li>
+      <li><a href="#features">Zašto mi?</a></li>
+      <li><a href="#contact">Kontakt</a></li>
+      <li><a href="#contact" class="nav-cta">Kupi odmah</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Premium Roblox Assets
+      </div>
+      <h1>
+        Gradite brže.<br>
+        <span class="line2">Prodajte više.</span>
+      </h1>
+      <p>
+        Profesionalni Roblox modeli, skripte i asseti napravljeni s pažnjom na svaki detalj. Sve što vam treba da vaša igrica stane uz bok s najboljima.
+      </p>
+      <div class="hero-btns">
+        <a href="#shop" class="btn-primary">Pregledaj shop →</a>
+        <a href="#contact" class="btn-secondary">Kontaktiraj me</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat-card">
+        <div class="stat-num">10+</div>
+        <div class="stat-label">Modela</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Custom</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">24h</div>
+        <div class="stat-label">Support</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOP -->
+  <section class="shop" id="shop">
+    <div class="section-header reveal">
+      <div class="section-tag">// Shop</div>
+      <h2>Dostupni Modeli</h2>
+    </div>
+
+    <div class="products-grid">
+
+      <!-- Model 1 -->
+      <div class="product-card reveal">
+        <div class="product-thumb">🦇
+          <span class="product-badge">HOT</span>
+        </div>
+        <div class="product-info">
+          <div class="product-name">Batman Skin Pack</div>
+          <div class="product-desc">Kompletan Batman skin za Roblox R15 likove. Uključuje sve dijelove tijela i detalje.</div>
+          <div class="product-tags">
+            <span class="tag">R15</span>
+            <span class="tag">Skin</span>
+            <span class="tag">DC</span>
+          </div>
+          <div class="product-footer">
+            <div class="price">$1.99 <span>USD</span></div>
+            <a href="#contact" class="buy-btn">Kupi</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Model 2 -->
+      <div class="product-card reveal">
+        <div class="product-thumb">⚡
+          <span class="product-badge gold">BEST</span>
+        </div>
+        <div class="product-info">
+          <div class="product-name">The Flash Skin Pack</div>
+          <div class="product-desc">Brzina u svakom pixelu. Detaljan Flash skin s custom bojama i efektima.</div>
+          <div class="product-tags">
+            <span class="tag">R15</span>
+            <span class="tag">Skin</span>
+            <span class="tag">DC</span>
+          </div>
+          <div class="product-footer">
+            <div class="price">$1.99 <span>USD</span></div>
+            <a href="#contact" class="buy-btn">Kupi</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Model 3 -->
+      <div class="product-card reveal">
+        <div class="product-thumb">🦸</div>
+        <div class="product-info">
+          <div class="product-name">Superman Skin Pack</div>
+          <div class="product-desc">Čelik i plava — kultni Superman skin za tvoj Roblox projekt.</div>
+          <div class="product-tags">
+            <span class="tag">R15</span>
+            <span class="tag">Skin</span>
+            <span class="tag">DC</span>
+          </div>
+          <div class="product-footer">
+            <div class="price">$2.49 <span>USD</span></div>
+            <a href="#contact" class="buy-btn">Kupi</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Model 4 -->
+      <div class="product-card reveal">
+        <div class="product-thumb">🌟</div>
+        <div class="product-info">
+          <div class="product-name">DC Hero Bundle</div>
+          <div class="product-desc">Svi DC skinovi u jednom paketu — Batman, Flash, Superman, Wonder Woman i još.</div>
+          <div class="product-tags">
+            <span class="tag">Bundle</span>
+            <span class="tag">7 Skina</span>
+            <span class="tag">Uštedi 40%</span>
+          </div>
+          <div class="product-footer">
+            <div class="price">$7.99 <span>USD</span></div>
+            <a href="#contact" class="buy-btn">Kupi</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Coming soon -->
+      <div class="coming-soon-card reveal">
+        <div class="coming-soon-inner">
+          <div class="icon">🔧</div>
+          <h3>Više modela uskoro</h3>
+          <p>Kontaktiraj me za custom narudžbe</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features" id="features">
+    <div class="section-header reveal">
+      <div class="section-tag">// Zašto BloxFR.tools</div>
+      <h2>Kvaliteta na prvom mjestu</h2>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <span class="feature-icon">🎯</span>
+        <h3>100% Custom</h3>
+        <p>Svaki model je ručno napravljen — nema copy-paste radova. Originalni dizajn za svaki asset.</p>
+      </div>
+      <div class="feature-card reveal">
+        <span class="feature-icon">⚡</span>
+        <h3>Brza isporuka</h3>
+        <p>Nakon kupovine dobivate fajlove odmah. Custom narudžbe za 24-48 sati.</p>
+      </div>
+      <div class="feature-card reveal">
+        <span class="feature-icon">🔧</span>
+        <h3>Laka instalacija</h3>
+        <p>Svaki model dolazi s uputama. Plug & play — odmah radi u vašem projektu.</p>
+      </div>
+      <div class="feature-card reveal">
+        <span class="feature-icon">💬</span>
+        <h3>Support</h3>
+        <p>Imate problem s instalacijom? Pišite mi i pomoći ću vam u najkraćem roku.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="contact-box reveal">
+      <h2>Kontaktirajte me</h2>
+      <p>Za kupovinu, custom narudžbe ili pitanja — pišite mi direktno. Odgovaram brzo!</p>
+      <div class="contact-links">
+        <a href="#" class="contact-link">💬 Discord</a>
+        <a href="#" class="contact-link">🐦 Twitter / X</a>
+        <a href="#" class="contact-link">📧 Email</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="logo">BloxFR<span style="color:var(--accent)">.</span>tools</div>
+    <p>© 2026 BloxFR.tools — Sva prava pridržana.</p>
+    <p style="color:var(--muted); font-size:0.75rem;">Nije povezano s Roblox Corporation.</p>
+  </footer>
+
+  <script>
+    // Custom cursor
+    const cursor = document.getElementById('cursor');
+    const ring = document.getElementById('cursorRing');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX; my = e.clientY;
+      cursor.style.left = mx + 'px';
+      cursor.style.top = my + 'px';
+    });
+
+    function animateRing() {
+      rx += (mx - rx) * 0.12;
+      ry += (my - ry) * 0.12;
+      ring.style.left = rx + 'px';
+      ring.style.top = ry + 'px';
+      requestAnimationFrame(animateRing);
+    }
+    animateRing();
+
+    document.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursor.style.transform = 'translate(-50%, -50%) scale(2)';
+        ring.style.opacity = '0';
+      });
+      el.addEventListener('mouseleave', () => {
+        cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+        ring.style.opacity = '1';
+      });
+    });
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
