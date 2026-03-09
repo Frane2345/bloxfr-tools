@@ -217,12 +217,35 @@
         </div>
       </div>
 
+      <!-- ICE/STONE MAP -->
+      <div class="pack-card reveal" id="card-ice">
+        <div class="card-slideshow">
+          <div class="card-slide active"><img src="map2a.png" alt="Ice Map 1" /><div class="card-slide-overlay"><div class="card-slide-label">Ice/Stone Map — View 1</div></div></div>
+          <div class="card-slide"><img src="map2b.png" alt="Ice Map 2" /><div class="card-slide-overlay"><div class="card-slide-label">Ice/Stone Map — View 2</div></div></div>
+          <button class="card-prev" data-card="ice">←</button>
+          <button class="card-next" data-card="ice">→</button>
+          <div class="card-controls">
+            <button class="card-dot active" data-card="ice" data-index="0"></button>
+            <button class="card-dot" data-card="ice" data-index="1"></button>
+          </div>
+        </div>
+        <div class="card-body">
+          <span class="card-tag">// Map Pack</span>
+          <div class="card-title">Ice / Stone Map</div>
+          <div class="card-desc">Mystical low-poly arena with stone pillars, ice crystals, gem collectibles and wavy water floor. Perfect for battle or adventure games.</div>
+          <div class="card-footer">
+            <div class="card-price">250 <span>Robux</span></div>
+            <a href="#contact" class="buy-btn">Buy Now</a>
+          </div>
+        </div>
+      </div>
+
       <!-- MORE COMING SOON -->
       <div class="coming-soon reveal">
         <div class="coming-soon-inner">
           <div class="icon">🔧</div>
           <h3>More packs coming soon</h3>
-          <p>Ice Map, Snow Map, Japan Pack, Weapons and more!</p>
+          <p>Snow Map, Japan Pack, Weapons and more!</p>
         </div>
       </div>
 
@@ -250,7 +273,7 @@
       <p>To purchase or ask questions, contact me directly. I respond fast!</p>
       <div class="contact-links">
         <a href="https://discord.gg/RyrwZkH3" target="_blank" class="contact-link">💬 Discord Server</a>
-        <a href="mailto:franeseparovic1@gmail.com" class="contact-link">📧 franeseparovic1@gmail.com</a>
+        <a href="/cdn-cgi/l/email-protection#8ee8fcefe0ebfdebfeeffce1f8e7edbfcee9e3efe7e2a0ede1e3" class="contact-link">📧 <span class="__cf_email__" data-cfemail="f49286959a9187918495869b829d97c5b49399959d98da979b99">[email&#160;protected]</span></a>
       </div>
     </div>
   </section>
@@ -261,7 +284,7 @@
     <p style="color:var(--muted);font-size:0.75rem;">Not affiliated with Roblox Corporation.</p>
   </footer>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // Cursor
     const cursor=document.getElementById('cursor'),ring=document.getElementById('cursorRing');
     let mx=0,my=0,rx=0,ry=0;
@@ -298,11 +321,4 @@
       dots[idx].classList.add('active');
     }
     initCard('forest', 3);
-
-    // Reveal
-    document.querySelectorAll('.reveal').forEach(el=>new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
-    },{threshold:0.1}).observe(el));
-  </script>
-</body>
-</html>
+    initCard('ice', 2);
