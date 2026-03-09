@@ -3,29 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BloxFR.tools — Premium Roblox Games</title>
-  <meta name="description" content="Premium fully scripted Roblox game packs by BloxFR.tools." />
+  <title>BloxFR.tools — Premium Roblox Assets</title>
+  <meta name="description" content="Premium Roblox models, maps, weapons and assets by BloxFR.tools." />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Syne:wght@400;600;800&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #080b12;
-      --bg2: #0d1220;
-      --accent: #e8371b;
-      --accent2: #ff6b47;
-      --gold: #f5a623;
-      --diamond: #00cfff;
-      --text: #e8eaf0;
-      --muted: #6b7280;
-      --card: #0f1623;
-      --border: rgba(232, 55, 27, 0.2);
+      --bg: #080b12; --bg2: #0d1220; --accent: #e8371b; --accent2: #ff6b47;
+      --gold: #f5a623; --diamond: #00cfff; --text: #e8eaf0; --muted: #6b7280;
+      --card: #0f1623; --border: rgba(232,55,27,0.2);
     }
     * { margin:0; padding:0; box-sizing:border-box; }
     html { scroll-behavior:smooth; }
     body { background:var(--bg); color:var(--text); font-family:'Syne',sans-serif; overflow-x:hidden; cursor:none; }
-
     .cursor { position:fixed; width:12px; height:12px; background:var(--accent); border-radius:50%; pointer-events:none; z-index:9999; transform:translate(-50%,-50%); mix-blend-mode:screen; }
-    .cursor-ring { position:fixed; width:36px; height:36px; border:1.5px solid rgba(232,55,27,0.5); border-radius:50%; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); transition:transform 0.15s ease, opacity 0.3s; }
-
+    .cursor-ring { position:fixed; width:36px; height:36px; border:1.5px solid rgba(232,55,27,0.5); border-radius:50%; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); transition:transform 0.15s ease,opacity 0.3s; }
     body::before { content:''; position:fixed; inset:0; background-image:linear-gradient(rgba(232,55,27,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(232,55,27,0.04) 1px,transparent 1px); background-size:60px 60px; pointer-events:none; z-index:0; }
 
     nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:20px 60px; background:rgba(8,11,18,0.9); backdrop-filter:blur(20px); border-bottom:1px solid var(--border); }
@@ -65,56 +56,56 @@
     /* HOW TO BUY */
     .how-to-buy { padding:60px 60px 0; }
     .steps { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; max-width:900px; margin:0 auto; }
-    .step { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:24px; flex:1; min-width:180px; max-width:220px; text-align:center; position:relative; }
+    .step { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:24px; flex:1; min-width:180px; max-width:220px; text-align:center; }
     .step-num { font-family:'Orbitron',monospace; font-size:2rem; font-weight:900; color:var(--accent); margin-bottom:12px; }
     .step h4 { font-size:0.85rem; font-weight:700; margin-bottom:8px; }
     .step p { font-size:0.75rem; color:var(--muted); line-height:1.5; }
-    .step-arrow { font-size:1.5rem; color:var(--muted); display:flex; align-items:center; padding-top:24px; }
+    .step-arrow { font-size:1.5rem; color:var(--muted); display:flex; align-items:center; padding-top:20px; }
 
-    /* SHOP — only Normal pack */
+    /* SHOP */
     .shop { padding:80px 60px 100px; background:var(--bg2); }
+    .packs-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:32px; max-width:1200px; margin:0 auto; }
 
-    .normal-pack-wrap { max-width:900px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:32px; align-items:start; }
+    /* PACK CARD */
+    .pack-card { background:var(--card); border:1px solid var(--border); border-radius:16px; overflow:hidden; transition:transform 0.3s,box-shadow 0.3s; }
+    .pack-card:hover { transform:translateY(-6px); box-shadow:0 20px 40px rgba(232,55,27,0.15); border-color:var(--accent); }
 
-    /* SLIDESHOW */
-    .slideshow { border-radius:16px; overflow:hidden; border:2px solid rgba(255,255,255,0.1); position:relative; }
-    .slide { display:none; }
-    .slide.active { display:block; }
-    .slide img { width:100%; height:320px; object-fit:cover; display:block; }
-    .slide-overlay { position:absolute; bottom:0; left:0; right:0; padding:16px 20px; background:linear-gradient(to top,rgba(8,11,18,0.95),transparent); }
-    .slide-label { font-family:'Orbitron',monospace; font-size:0.8rem; font-weight:700; color:var(--accent); }
-    .slide-controls { display:flex; align-items:center; justify-content:center; gap:12px; margin-top:14px; }
-    .slide-btn { background:var(--card); border:1px solid var(--border); color:var(--text); width:38px; height:38px; border-radius:50%; font-size:1rem; cursor:none; transition:all 0.2s; display:flex; align-items:center; justify-content:center; }
-    .slide-btn:hover { background:var(--accent); border-color:var(--accent); }
-    .slide-dots { display:flex; gap:6px; }
-    .dot { width:7px; height:7px; border-radius:50%; background:var(--muted); cursor:none; transition:background 0.2s; border:none; }
-    .dot.active { background:var(--accent); }
+    /* SLIDESHOW inside card */
+    .card-slideshow { position:relative; height:220px; overflow:hidden; }
+    .card-slide { display:none; position:absolute; inset:0; }
+    .card-slide.active { display:block; }
+    .card-slide img { width:100%; height:100%; object-fit:cover; }
+    .card-slide-overlay { position:absolute; bottom:0; left:0; right:0; padding:10px 14px; background:linear-gradient(to top,rgba(8,11,18,0.9),transparent); }
+    .card-slide-label { font-size:0.72rem; color:var(--accent); font-weight:700; }
+    .card-controls { position:absolute; bottom:10px; right:12px; display:flex; gap:6px; z-index:2; }
+    .card-dot { width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,0.4); border:none; cursor:none; transition:background 0.2s; }
+    .card-dot.active { background:var(--accent); }
+    .card-prev, .card-next { background:rgba(0,0,0,0.5); border:none; color:white; width:28px; height:28px; border-radius:50%; font-size:0.8rem; cursor:none; display:flex; align-items:center; justify-content:center; transition:background 0.2s; position:absolute; top:50%; transform:translateY(-50%); z-index:2; }
+    .card-prev { left:10px; }
+    .card-next { right:10px; }
+    .card-prev:hover, .card-next:hover { background:var(--accent); }
 
-    /* Pack info */
-    .pack-info { background:var(--card); border:2px solid rgba(255,255,255,0.12); border-radius:16px; padding:32px; }
-    .pack-tag { font-size:0.7rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent); margin-bottom:12px; display:block; }
-    .pack-title { font-family:'Orbitron',monospace; font-size:1.6rem; font-weight:900; margin-bottom:8px; }
-    .pack-price-big { font-family:'Orbitron',monospace; font-size:2.2rem; font-weight:900; color:var(--accent); margin-bottom:20px; }
-    .pack-price-big span { font-size:1rem; color:var(--muted); font-family:'Syne',sans-serif; }
-    .pack-features { list-style:none; margin-bottom:28px; display:flex; flex-direction:column; gap:10px; }
-    .pack-features li { font-size:0.85rem; color:var(--muted); display:flex; align-items:center; gap:10px; }
-    .pack-features li::before { content:'✓'; color:#4caf50; font-weight:700; font-size:1rem; }
+    .card-body { padding:22px; }
+    .card-tag { font-size:0.68rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent); margin-bottom:8px; display:block; }
+    .card-title { font-family:'Orbitron',monospace; font-size:1rem; font-weight:900; margin-bottom:6px; }
+    .card-desc { font-size:0.8rem; color:var(--muted); line-height:1.6; margin-bottom:16px; }
+    .card-footer { display:flex; align-items:center; justify-content:space-between; margin-top:16px; padding-top:16px; border-top:1px solid rgba(255,255,255,0.06); }
+    .card-price { font-family:'Orbitron',monospace; font-size:1.3rem; font-weight:900; color:var(--accent); }
+    .card-price span { font-size:0.68rem; color:var(--muted); font-family:'Syne',sans-serif; display:block; }
+    .buy-btn { background:var(--accent); color:white; border:none; padding:11px 22px; border-radius:8px; font-family:'Syne',sans-serif; font-weight:700; font-size:0.82rem; letter-spacing:0.06em; text-transform:uppercase; cursor:none; transition:all 0.2s; text-decoration:none; display:inline-block; }
+    .buy-btn:hover { background:var(--accent2); transform:scale(1.05); }
 
-    .buy-steps { display:flex; flex-direction:column; gap:12px; }
-    .buy-step-btn { display:flex; align-items:center; gap:14px; padding:14px 20px; border-radius:10px; text-decoration:none; font-weight:700; font-size:0.88rem; transition:all 0.2s; border:none; cursor:none; width:100%; }
-    .buy-step-btn.roblox { background:#e8371b; color:white; }
-    .buy-step-btn.roblox:hover { background:#ff5535; transform:translateY(-2px); box-shadow:0 6px 20px rgba(232,55,27,0.4); }
-    .buy-step-btn.discord { background:#5865F2; color:white; }
-    .buy-step-btn.discord:hover { background:#6d7af5; transform:translateY(-2px); box-shadow:0 6px 20px rgba(88,101,242,0.4); }
-    .buy-step-btn .btn-icon { font-size:1.3rem; }
-    .buy-step-btn .btn-text { display:flex; flex-direction:column; text-align:left; }
-    .buy-step-btn .btn-text small { font-weight:400; font-size:0.72rem; opacity:0.75; }
-    .buy-step-divider { text-align:center; font-size:0.75rem; color:var(--muted); font-weight:600; letter-spacing:0.1em; }
+    /* COMING SOON */
+    .coming-soon { background:var(--card); border:2px dashed rgba(255,255,255,0.08); border-radius:16px; display:flex; align-items:center; justify-content:center; min-height:300px; }
+    .coming-soon-inner { text-align:center; padding:40px; }
+    .coming-soon-inner .icon { font-size:2.5rem; margin-bottom:16px; }
+    .coming-soon-inner h3 { font-family:'Orbitron',monospace; font-size:1rem; color:var(--muted); margin-bottom:8px; }
+    .coming-soon-inner p { font-size:0.78rem; color:rgba(107,114,128,0.6); }
 
     /* FEATURES */
     .features { padding:100px 60px; }
     .features-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:20px; max-width:1200px; margin:0 auto; }
-    .feature-card { background:var(--card); border:1px solid rgba(255,255,255,0.05); border-radius:12px; padding:32px; transition:border-color 0.3s, transform 0.3s; }
+    .feature-card { background:var(--card); border:1px solid rgba(255,255,255,0.05); border-radius:12px; padding:32px; transition:border-color 0.3s,transform 0.3s; }
     .feature-card:hover { border-color:rgba(232,55,27,0.3); transform:translateY(-4px); }
     .feature-icon { font-size:2rem; margin-bottom:16px; display:block; }
     .feature-card h3 { font-family:'Orbitron',monospace; font-size:0.95rem; font-weight:700; margin-bottom:10px; }
@@ -132,27 +123,21 @@
     footer { position:relative; z-index:2; padding:40px 60px; border-top:1px solid rgba(255,255,255,0.06); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
     footer p { font-size:0.78rem; color:var(--muted); }
 
-    .reveal { opacity:0; transform:translateY(40px); transition:opacity 0.7s ease, transform 0.7s ease; }
+    .reveal { opacity:0; transform:translateY(40px); transition:opacity 0.7s ease,transform 0.7s ease; }
     .reveal.visible { opacity:1; transform:translateY(0); }
 
     @media (max-width:768px) {
-      nav { padding:16px 24px; }
-      .nav-links { display:none; }
-      .hero { padding:100px 24px 60px; }
-      .stats { display:none; }
-      .hero h1 { font-size:2.2rem; }
+      nav { padding:16px 24px; } .nav-links { display:none; }
+      .hero { padding:100px 24px 60px; } .stats { display:none; } .hero h1 { font-size:2.2rem; }
       .shop,.features,.contact,.how-to-buy { padding:60px 24px; }
-      .normal-pack-wrap { grid-template-columns:1fr; }
-      .steps { flex-direction:column; align-items:center; }
-      .step-arrow { display:none; }
+      .packs-grid { grid-template-columns:1fr; }
+      .steps { flex-direction:column; align-items:center; } .step-arrow { display:none; }
       .contact-box { padding:40px 24px; }
       footer { flex-direction:column; text-align:center; padding:32px 24px; }
-      .slide img { height:200px; }
     }
   </style>
 </head>
 <body>
-
   <div class="cursor" id="cursor"></div>
   <div class="cursor-ring" id="cursorRing"></div>
 
@@ -162,24 +147,24 @@
       <li><a href="#shop">Shop</a></li>
       <li><a href="#features">Why Us</a></li>
       <li><a href="#contact">Contact</a></li>
-      <li><a href="#shop" class="nav-cta">Buy Now</a></li>
+      <li><a href="#contact" class="nav-cta">Buy Now</a></li>
     </ul>
   </nav>
 
   <section class="hero">
     <div class="hero-glow"></div>
     <div class="hero-content">
-      <div class="hero-badge"><span class="badge-dot"></span>Premium Roblox Games</div>
-      <h1>Full Scripted.<br><span class="line2">Ready to Play.</span></h1>
-      <p>Premium fully scripted Roblox brainrot packs. Handcrafted with custom scripts, models and mechanics — ready to launch instantly.</p>
+      <div class="hero-badge"><span class="badge-dot"></span>Premium Roblox Assets</div>
+      <h1>Build faster.<br><span class="line2">Look better.</span></h1>
+      <p>Premium Roblox maps, weapons, props and assets. Everything handcrafted and ready to drop into your game instantly.</p>
       <div class="hero-btns">
-        <a href="#shop" class="btn-primary">Buy Normal Pack →</a>
+        <a href="#shop" class="btn-primary">Browse Shop →</a>
         <a href="#contact" class="btn-secondary">Contact Me</a>
       </div>
     </div>
     <div class="stats">
-      <div class="stat-card"><div class="stat-num">250</div><div class="stat-label">Robux</div></div>
-      <div class="stat-card"><div class="stat-num">100%</div><div class="stat-label">Scripted</div></div>
+      <div class="stat-card"><div class="stat-num">15+</div><div class="stat-label">Packs</div></div>
+      <div class="stat-card"><div class="stat-num">100%</div><div class="stat-label">Custom</div></div>
       <div class="stat-card"><div class="stat-num">24h</div><div class="stat-label">Support</div></div>
     </div>
   </section>
@@ -191,23 +176,11 @@
       <h2>3 Simple Steps</h2>
     </div>
     <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <h4>Buy Game Pass</h4>
-        <p>Click the Roblox button and purchase the Game Pass for 250 Robux</p>
-      </div>
+      <div class="step"><div class="step-num">1</div><h4>Pick a Pack</h4><p>Browse the shop and find the pack you want</p></div>
       <div class="step-arrow">→</div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <h4>Join Discord</h4>
-        <p>Join our Discord server and open a ticket in #purchases</p>
-      </div>
+      <div class="step"><div class="step-num">2</div><h4>Buy Game Pass</h4><p>Click Buy Now and purchase the Roblox Game Pass</p></div>
       <div class="step-arrow">→</div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <h4>Get Your Pack</h4>
-        <p>Send your Roblox username as proof and receive your files instantly!</p>
-      </div>
+      <div class="step"><div class="step-num">3</div><h4>Get Files</h4><p>Join Discord, open a ticket and send your username to receive files</p></div>
     </div>
   </section>
 
@@ -215,66 +188,41 @@
   <section class="shop" id="shop">
     <div class="section-header reveal">
       <div class="section-tag">// Shop</div>
-      <h2>Normal Brainrot Pack</h2>
+      <h2>Available Packs</h2>
     </div>
+    <div class="packs-grid">
 
-    <div class="normal-pack-wrap">
-
-      <!-- SLIDESHOW -->
-      <div class="reveal">
-        <div class="slideshow">
-          <div class="slide active">
-            <img src="img1.png" alt="Normal Pack Screenshot 1" />
-            <div class="slide-overlay"><div class="slide-label">Normal Pack — Characters</div></div>
-          </div>
-          <div class="slide">
-            <img src="img2.png" alt="Normal Pack Screenshot 2" />
-            <div class="slide-overlay"><div class="slide-label">Normal Pack — More Characters</div></div>
-          </div>
-          <div class="slide">
-            <img src="img3.png" alt="Normal Pack Screenshot 3" />
-            <div class="slide-overlay"><div class="slide-label">Normal Pack — Full Collection</div></div>
+      <!-- FOREST MAP -->
+      <div class="pack-card reveal" id="card-forest">
+        <div class="card-slideshow">
+          <div class="card-slide active"><img src="map1a.png" alt="Forest Map 1" /><div class="card-slide-overlay"><div class="card-slide-label">Forest Map — View 1</div></div></div>
+          <div class="card-slide"><img src="map1b.png" alt="Forest Map 2" /><div class="card-slide-overlay"><div class="card-slide-label">Forest Map — View 2</div></div></div>
+          <div class="card-slide"><img src="map1c.png" alt="Forest Map 3" /><div class="card-slide-overlay"><div class="card-slide-label">Forest Map — View 3</div></div></div>
+          <button class="card-prev" data-card="forest">←</button>
+          <button class="card-next" data-card="forest">→</button>
+          <div class="card-controls">
+            <button class="card-dot active" data-card="forest" data-index="0"></button>
+            <button class="card-dot" data-card="forest" data-index="1"></button>
+            <button class="card-dot" data-card="forest" data-index="2"></button>
           </div>
         </div>
-        <div class="slide-controls">
-          <button class="slide-btn" id="prevBtn">←</button>
-          <div class="slide-dots">
-            <button class="dot active" data-index="0"></button>
-            <button class="dot" data-index="1"></button>
-            <button class="dot" data-index="2"></button>
+        <div class="card-body">
+          <span class="card-tag">// Map Pack</span>
+          <div class="card-title">Forest Map</div>
+          <div class="card-desc">Full low-poly forest map with mountains, paths, shop building, trees, rocks and mushrooms. Ready to use in your game.</div>
+          <div class="card-footer">
+            <div class="card-price">300 <span>Robux</span></div>
+            <a href="#contact" class="buy-btn">Buy Now</a>
           </div>
-          <button class="slide-btn" id="nextBtn">→</button>
         </div>
       </div>
 
-      <!-- PACK INFO -->
-      <div class="pack-info reveal">
-        <span class="pack-tag">// Brainrot Pack</span>
-        <div class="pack-title">Normal Pack</div>
-        <div class="pack-price-big">250 <span>Robux</span></div>
-        <ul class="pack-features">
-          <li>Full game scripts included</li>
-          <li>Custom brainrot models</li>
-          <li>Basic game mechanics</li>
-          <li>Full setup guide</li>
-          <li>Discord support</li>
-        </ul>
-        <div class="buy-steps">
-          <a href="https://www.roblox.com/game-pass/1740559293" target="_blank" class="buy-step-btn roblox">
-            <span class="btn-icon">🎮</span>
-            <span class="btn-text">
-              Buy on Roblox
-              <small>250 Robux — click to purchase Game Pass</small>
-            </span>
-          </a>
-          <div class="buy-step-divider">THEN AFTER PURCHASE ↓</div>
-          <a href="https://discord.gg/RyrwZkH3" target="_blank" class="buy-step-btn discord">
-            <span class="btn-icon">💬</span>
-            <span class="btn-text">
-              Join Discord to Get Files
-              <small>Open a ticket and send your Roblox username</small>
-            </span>
-          </a>
+      <!-- MORE COMING SOON -->
+      <div class="coming-soon reveal">
+        <div class="coming-soon-inner">
+          <div class="icon">🔧</div>
+          <h3>More packs coming soon</h3>
+          <p>Ice Map, Snow Map, Japan Pack, Weapons and more!</p>
         </div>
       </div>
 
@@ -288,10 +236,10 @@
       <h2>Quality First</h2>
     </div>
     <div class="features-grid">
-      <div class="feature-card reveal"><span class="feature-icon">🎯</span><h3>100% Scripted</h3><p>Every pack is fully scripted from scratch. No broken scripts, no missing parts — just plug and play.</p></div>
-      <div class="feature-card reveal"><span class="feature-icon">⚡</span><h3>Fast Delivery</h3><p>After purchase join Discord and get your files within minutes.</p></div>
-      <div class="feature-card reveal"><span class="feature-icon">🔧</span><h3>Easy Setup</h3><p>Every pack comes with a full setup guide. Even beginners can get it running in minutes.</p></div>
-      <div class="feature-card reveal"><span class="feature-icon">💬</span><h3>Support</h3><p>Having issues? Message me on Discord or Email and I'll help you out fast.</p></div>
+      <div class="feature-card reveal"><span class="feature-icon">🎯</span><h3>100% Custom</h3><p>Every asset is handcrafted from scratch. No recycled or stolen work.</p></div>
+      <div class="feature-card reveal"><span class="feature-icon">⚡</span><h3>Fast Delivery</h3><p>Join Discord after purchase and get your files within minutes.</p></div>
+      <div class="feature-card reveal"><span class="feature-icon">🔧</span><h3>Easy to Use</h3><p>Every pack is plug and play — drag and drop into your game.</p></div>
+      <div class="feature-card reveal"><span class="feature-icon">💬</span><h3>Support</h3><p>Need help? Open a ticket on Discord and I'll sort it out fast.</p></div>
     </div>
   </section>
 
@@ -299,7 +247,7 @@
   <section class="contact" id="contact">
     <div class="contact-box reveal">
       <h2>Get In Touch</h2>
-      <p>For questions or support, contact me directly. I respond fast!</p>
+      <p>To purchase or ask questions, contact me directly. I respond fast!</p>
       <div class="contact-links">
         <a href="https://discord.gg/RyrwZkH3" target="_blank" class="contact-link">💬 Discord Server</a>
         <a href="mailto:franeseparovic1@gmail.com" class="contact-link">📧 franeseparovic1@gmail.com</a>
@@ -314,6 +262,7 @@
   </footer>
 
   <script>
+    // Cursor
     const cursor=document.getElementById('cursor'),ring=document.getElementById('cursorRing');
     let mx=0,my=0,rx=0,ry=0;
     document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+'px';cursor.style.top=my+'px';});
@@ -323,14 +272,37 @@
       el.addEventListener('mouseenter',()=>{cursor.style.transform='translate(-50%,-50%) scale(2)';ring.style.opacity='0';});
       el.addEventListener('mouseleave',()=>{cursor.style.transform='translate(-50%,-50%) scale(1)';ring.style.opacity='1';});
     });
-    let current=0;
-    const slides=document.querySelectorAll('.slide'),dots=document.querySelectorAll('.dot');
-    function goTo(n){slides[current].classList.remove('active');dots[current].classList.remove('active');current=(n+slides.length)%slides.length;slides[current].classList.add('active');dots[current].classList.add('active');}
-    document.getElementById('nextBtn').addEventListener('click',()=>goTo(current+1));
-    document.getElementById('prevBtn').addEventListener('click',()=>goTo(current-1));
-    dots.forEach(d=>d.addEventListener('click',()=>goTo(+d.dataset.index)));
-    setInterval(()=>goTo(current+1),4000);
-    document.querySelectorAll('.reveal').forEach(el=>new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.1}).observe(el));
+
+    // Card slideshows
+    const cardStates = {};
+    function initCard(name, count) {
+      cardStates[name] = 0;
+      const slides = document.querySelectorAll(`#card-${name} .card-slide`);
+      const dots = document.querySelectorAll(`[data-card="${name}"].card-dot`);
+      document.querySelector(`#card-${name} .card-prev`).addEventListener('click', () => goCard(name, -1));
+      document.querySelector(`#card-${name} .card-next`).addEventListener('click', () => goCard(name, 1));
+      dots.forEach(d => d.addEventListener('click', () => { goCardTo(name, +d.dataset.index); }));
+      setInterval(() => goCard(name, 1), 4000 + Math.random()*1000);
+    }
+    function goCard(name, dir) {
+      const slides = document.querySelectorAll(`#card-${name} .card-slide`);
+      goCardTo(name, (cardStates[name] + dir + slides.length) % slides.length);
+    }
+    function goCardTo(name, idx) {
+      const slides = document.querySelectorAll(`#card-${name} .card-slide`);
+      const dots = document.querySelectorAll(`[data-card="${name}"].card-dot`);
+      slides[cardStates[name]].classList.remove('active');
+      dots[cardStates[name]].classList.remove('active');
+      cardStates[name] = idx;
+      slides[idx].classList.add('active');
+      dots[idx].classList.add('active');
+    }
+    initCard('forest', 3);
+
+    // Reveal
+    document.querySelectorAll('.reveal').forEach(el=>new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
+    },{threshold:0.1}).observe(el));
   </script>
 </body>
 </html>
