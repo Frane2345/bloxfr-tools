@@ -9,7 +9,6 @@
 * { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior:smooth; }
 body { background:#080b12; color:#e8eaf0; font-family:'Syne',sans-serif; overflow-x:hidden; }
-
 body::before { content:''; position:fixed; inset:0; background-image:linear-gradient(rgba(27,111,232,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(27,111,232,0.04) 1px,transparent 1px); background-size:60px 60px; pointer-events:none; z-index:0; }
 
 nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:20px 60px; background:rgba(8,11,18,0.95); backdrop-filter:blur(20px); border-bottom:1px solid rgba(27,111,232,0.2); }
@@ -33,7 +32,6 @@ nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-i
 .btn-secondary { background:transparent; color:#e8eaf0; padding:16px 36px; border-radius:4px; text-decoration:none; font-weight:700; font-size:0.9rem; letter-spacing:0.08em; text-transform:uppercase; border:2px solid rgba(255,255,255,0.15); transition:all 0.2s; display:inline-block; }
 .btn-secondary:hover { border-color:#1b6fe8; color:#1b6fe8; }
 
-/* HOW TO BUY */
 .how-to-buy { position:relative; z-index:2; padding:80px 60px; }
 .section-header { text-align:center; margin-bottom:60px; }
 .section-tag { display:inline-block; font-size:0.72rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:#1b6fe8; margin-bottom:16px; }
@@ -45,19 +43,18 @@ nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-i
 .step p { font-size:0.75rem; color:#6b7280; line-height:1.5; }
 .step-arrow { font-size:1.5rem; color:#6b7280; }
 
-/* SHOP */
 .shop { position:relative; z-index:2; padding:80px 60px 100px; background:#0d1220; }
 .packs-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:32px; max-width:1200px; margin:0 auto; }
 
-/* PACK CARD */
 .pack-card { background:#0f1623; border:1px solid rgba(27,111,232,0.2); border-radius:16px; overflow:hidden; transition:transform 0.3s,box-shadow 0.3s; }
 .pack-card:hover { transform:translateY(-6px); box-shadow:0 20px 40px rgba(27,111,232,0.15); border-color:#1b6fe8; }
 
-.card-slideshow { position:relative; height:220px; overflow:hidden; background:#0a0f1a; }
+.card-slideshow { position:relative; height:220px; overflow:hidden; background:#0a0f1a; cursor:zoom-in; }
 .card-slide { display:none; position:absolute; inset:0; }
 .card-slide.active { display:block; }
 .card-slide img { width:100%; height:100%; object-fit:cover; }
-.slide-label { position:absolute; bottom:0; left:0; right:0; padding:10px 14px; background:linear-gradient(to top,rgba(8,11,18,0.9),transparent); font-size:0.72rem; color:#1b6fe8; font-weight:700; }
+.slide-label { position:absolute; bottom:0; left:0; right:0; padding:10px 14px; background:linear-gradient(to top,rgba(8,11,18,0.9),transparent); font-size:0.72rem; color:#1b6fe8; font-weight:700; pointer-events:none; }
+.zoom-hint { position:absolute; top:10px; right:10px; background:rgba(0,0,0,0.6); color:white; font-size:0.65rem; padding:4px 8px; border-radius:4px; pointer-events:none; opacity:0.8; }
 .card-prev, .card-next { background:rgba(0,0,0,0.6); border:none; color:white; width:30px; height:30px; border-radius:50%; font-size:0.9rem; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background 0.2s; position:absolute; top:50%; transform:translateY(-50%); z-index:3; }
 .card-prev { left:10px; }
 .card-next { right:10px; }
@@ -82,7 +79,6 @@ nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-i
 .coming-soon-inner h3 { font-family:'Orbitron',monospace; font-size:1rem; color:#6b7280; margin-bottom:8px; }
 .coming-soon-inner p { font-size:0.78rem; color:rgba(107,114,128,0.6); }
 
-/* FEATURES */
 .features { position:relative; z-index:2; padding:100px 60px; }
 .features-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:20px; max-width:1200px; margin:0 auto; }
 .feature-card { background:#0f1623; border:1px solid rgba(255,255,255,0.05); border-radius:12px; padding:32px; transition:border-color 0.3s,transform 0.3s; }
@@ -91,7 +87,6 @@ nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-i
 .feature-card h3 { font-family:'Orbitron',monospace; font-size:0.95rem; font-weight:700; margin-bottom:10px; }
 .feature-card p { font-size:0.83rem; color:#6b7280; line-height:1.65; }
 
-/* CONTACT */
 .contact { position:relative; z-index:2; padding:100px 60px; background:#0d1220; text-align:center; }
 .contact-box { max-width:600px; margin:0 auto; background:#0f1623; border:1px solid rgba(27,111,232,0.2); border-radius:16px; padding:60px 48px; }
 .contact-box h2 { font-family:'Orbitron',monospace; font-size:1.8rem; font-weight:900; margin-bottom:16px; }
@@ -102,6 +97,13 @@ nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-i
 
 footer { position:relative; z-index:2; padding:40px 60px; border-top:1px solid rgba(255,255,255,0.06); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
 footer p { font-size:0.78rem; color:#6b7280; }
+
+/* LIGHTBOX */
+.lightbox { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.92); z-index:9999; align-items:center; justify-content:center; }
+.lightbox.open { display:flex; }
+.lightbox img { max-width:90vw; max-height:90vh; border-radius:8px; object-fit:contain; box-shadow:0 0 60px rgba(27,111,232,0.3); }
+.lightbox-close { position:absolute; top:20px; right:30px; font-size:2.5rem; color:white; cursor:pointer; background:none; border:none; line-height:1; opacity:0.7; transition:opacity 0.2s; }
+.lightbox-close:hover { opacity:1; color:#1b6fe8; }
 
 @media(max-width:768px){
   nav{padding:16px 24px;} .nav-links{display:none;}
@@ -115,6 +117,12 @@ footer p { font-size:0.78rem; color:#6b7280; }
 </style>
 </head>
 <body>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightbox-img" src="" alt="" onclick="event.stopPropagation()" />
+</div>
 
 <nav>
   <div class="logo">BloxFR<span>.</span>tools</div>
@@ -161,22 +169,23 @@ footer p { font-size:0.78rem; color:#6b7280; }
 
     <!-- FOREST MAP -->
     <div class="pack-card" id="card-forest">
-      <div class="card-slideshow">
+      <div class="card-slideshow" onclick="openLightbox(this)">
         <div class="card-slide active"><img src="map1a.png" alt="Forest Map 1" /><div class="slide-label">Forest Map — View 1</div></div>
         <div class="card-slide"><img src="map1b.png" alt="Forest Map 2" /><div class="slide-label">Forest Map — View 2</div></div>
         <div class="card-slide"><img src="map1c.png" alt="Forest Map 3" /><div class="slide-label">Forest Map — View 3</div></div>
-        <button class="card-prev" onclick="prevSlide('forest')">&#8592;</button>
-        <button class="card-next" onclick="nextSlide('forest')">&#8594;</button>
+        <div class="zoom-hint">🔍 Click to zoom</div>
+        <button class="card-prev" onclick="event.stopPropagation();prevSlide('forest')">&#8592;</button>
+        <button class="card-next" onclick="event.stopPropagation();nextSlide('forest')">&#8594;</button>
         <div class="card-dots">
-          <button class="card-dot active" onclick="goSlide('forest',0)"></button>
-          <button class="card-dot" onclick="goSlide('forest',1)"></button>
-          <button class="card-dot" onclick="goSlide('forest',2)"></button>
+          <button class="card-dot active" onclick="event.stopPropagation();goSlide('forest',0)"></button>
+          <button class="card-dot" onclick="event.stopPropagation();goSlide('forest',1)"></button>
+          <button class="card-dot" onclick="event.stopPropagation();goSlide('forest',2)"></button>
         </div>
       </div>
       <div class="card-body">
         <span class="card-tag">// Map Pack</span>
         <div class="card-title">Forest Map</div>
-        <div class="card-desc">Full low-poly forest map with mountains, paths, shop building, trees, rocks and mushrooms. Ready to use in your game.</div>
+        <div class="card-desc">Full low-poly forest map with mountains, paths, shop building, trees, rocks and mushrooms.</div>
         <div class="card-footer">
           <div class="card-price">300 <small>Robux</small></div>
           <a href="#contact" class="buy-btn">Buy Now</a>
@@ -186,20 +195,21 @@ footer p { font-size:0.78rem; color:#6b7280; }
 
     <!-- ICE MAP -->
     <div class="pack-card" id="card-ice">
-      <div class="card-slideshow">
+      <div class="card-slideshow" onclick="openLightbox(this)">
         <div class="card-slide active"><img src="map2a.png" alt="Ice Map 1" /><div class="slide-label">Ice/Stone Map — View 1</div></div>
         <div class="card-slide"><img src="map2b.png" alt="Ice Map 2" /><div class="slide-label">Ice/Stone Map — View 2</div></div>
-        <button class="card-prev" onclick="prevSlide('ice')">&#8592;</button>
-        <button class="card-next" onclick="nextSlide('ice')">&#8594;</button>
+        <div class="zoom-hint">🔍 Click to zoom</div>
+        <button class="card-prev" onclick="event.stopPropagation();prevSlide('ice')">&#8592;</button>
+        <button class="card-next" onclick="event.stopPropagation();nextSlide('ice')">&#8594;</button>
         <div class="card-dots">
-          <button class="card-dot active" onclick="goSlide('ice',0)"></button>
-          <button class="card-dot" onclick="goSlide('ice',1)"></button>
+          <button class="card-dot active" onclick="event.stopPropagation();goSlide('ice',0)"></button>
+          <button class="card-dot" onclick="event.stopPropagation();goSlide('ice',1)"></button>
         </div>
       </div>
       <div class="card-body">
         <span class="card-tag">// Map Pack</span>
         <div class="card-title">Ice / Stone Map</div>
-        <div class="card-desc">Mystical low-poly arena with stone pillars, ice crystals, gem collectibles and wavy water floor. Perfect for battle games.</div>
+        <div class="card-desc">Mystical low-poly arena with stone pillars, ice crystals, gem collectibles and wavy water floor.</div>
         <div class="card-footer">
           <div class="card-price">250 <small>Robux</small></div>
           <a href="#contact" class="buy-btn">Buy Now</a>
@@ -209,16 +219,15 @@ footer p { font-size:0.78rem; color:#6b7280; }
 
     <!-- DESERT MAP -->
     <div class="pack-card" id="card-desert">
-      <div class="card-slideshow">
-        <div class="card-slide active"><img src="map3a.png" alt="Desert Map" /><div class="slide-label">Desert Map — View 1</div></div>
-        <div class="card-dots">
-          <button class="card-dot active"></button>
-        </div>
+      <div class="card-slideshow" onclick="openLightbox(this)">
+        <div class="card-slide active"><img src="map3a.png" alt="Desert Map" /><div class="slide-label">Desert Map</div></div>
+        <div class="zoom-hint">🔍 Click to zoom</div>
+        <div class="card-dots"><button class="card-dot active"></button></div>
       </div>
       <div class="card-body">
         <span class="card-tag">// Map Pack</span>
         <div class="card-title">Desert Map</div>
-        <div class="card-desc">Low-poly desert map with a pyramid, cacti, palm trees, sandy terrain and rocky cliffs. Great for adventure games.</div>
+        <div class="card-desc">Low-poly desert map with a pyramid, cacti, palm trees, sandy terrain and rocky cliffs.</div>
         <div class="card-footer">
           <div class="card-price">250 <small>Robux</small></div>
           <a href="#contact" class="buy-btn">Buy Now</a>
@@ -226,16 +235,35 @@ footer p { font-size:0.78rem; color:#6b7280; }
       </div>
     </div>
 
-    <!-- WEAPONS PACK -->
+    <!-- ISLAND MAP -->
+    <div class="pack-card" id="card-island">
+      <div class="card-slideshow" onclick="openLightbox(this)">
+        <div class="card-slide active"><img src="island.png" alt="Island Map" /><div class="slide-label">Island / Lighthouse Map</div></div>
+        <div class="zoom-hint">🔍 Click to zoom</div>
+        <div class="card-dots"><button class="card-dot active"></button></div>
+      </div>
+      <div class="card-body">
+        <span class="card-tag">// Map Pack</span>
+        <div class="card-title">Island Map</div>
+        <div class="card-desc">Beautiful low-poly island with a lighthouse, palm trees, beach, dock and cliffs surrounded by ocean.</div>
+        <div class="card-footer">
+          <div class="card-price">250 <small>Robux</small></div>
+          <a href="#contact" class="buy-btn">Buy Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- WEAPONS -->
     <div class="pack-card" id="card-weapons">
-      <div class="card-slideshow">
+      <div class="card-slideshow" onclick="openLightbox(this)">
         <div class="card-slide active"><img src="weapons.png" alt="Weapons Pack" /><div class="slide-label">Fantasy Weapons Pack</div></div>
+        <div class="zoom-hint">🔍 Click to zoom</div>
         <div class="card-dots"><button class="card-dot active"></button></div>
       </div>
       <div class="card-body">
         <span class="card-tag">// Weapons Pack</span>
         <div class="card-title">Fantasy Weapons Pack</div>
-        <div class="card-desc">Massive collection of low-poly fantasy weapons — swords, axes, hammers, spears, bows and more. Perfect for any RPG or battle game.</div>
+        <div class="card-desc">Massive collection of low-poly fantasy weapons — swords, axes, hammers, spears, bows and more.</div>
         <div class="card-footer">
           <div class="card-price">300 <small>Robux</small></div>
           <a href="#contact" class="buy-btn">Buy Now</a>
@@ -245,14 +273,15 @@ footer p { font-size:0.78rem; color:#6b7280; }
 
     <!-- JAPAN PROPS -->
     <div class="pack-card" id="card-japanprops">
-      <div class="card-slideshow">
+      <div class="card-slideshow" onclick="openLightbox(this)">
         <div class="card-slide active"><img src="japan-props.png" alt="Japan Props" /><div class="slide-label">Japan Props Pack</div></div>
+        <div class="zoom-hint">🔍 Click to zoom</div>
         <div class="card-dots"><button class="card-dot active"></button></div>
       </div>
       <div class="card-body">
         <span class="card-tag">// Props Pack</span>
         <div class="card-title">Japan Props Pack</div>
-        <div class="card-desc">Huge collection of Japanese props — lanterns, banners, bonsai, drums, gongs, market stalls, bamboo and much more.</div>
+        <div class="card-desc">Huge collection of Japanese props — lanterns, banners, bonsai, drums, gongs, market stalls and bamboo.</div>
         <div class="card-footer">
           <div class="card-price">200 <small>Robux</small></div>
           <a href="#contact" class="buy-btn">Buy Now</a>
@@ -260,16 +289,17 @@ footer p { font-size:0.78rem; color:#6b7280; }
       </div>
     </div>
 
-    <!-- BANNERS SHIELDS -->
+    <!-- BANNERS & SHIELDS -->
     <div class="pack-card" id="card-banners">
-      <div class="card-slideshow">
+      <div class="card-slideshow" onclick="openLightbox(this)">
         <div class="card-slide active"><img src="banners.png" alt="Banners and Shields" /><div class="slide-label">Banners &amp; Shields Pack</div></div>
+        <div class="zoom-hint">🔍 Click to zoom</div>
         <div class="card-dots"><button class="card-dot active"></button></div>
       </div>
       <div class="card-body">
         <span class="card-tag">// Props Pack</span>
         <div class="card-title">Banners &amp; Shields Pack</div>
-        <div class="card-desc">Collection of fantasy banners, flags and shields with unique designs. Perfect for decorating castles, camps or battle arenas.</div>
+        <div class="card-desc">Fantasy banners, flags and shields with unique designs. Perfect for castles, camps or battle arenas.</div>
         <div class="card-footer">
           <div class="card-price">150 <small>Robux</small></div>
           <a href="#contact" class="buy-btn">Buy Now</a>
@@ -277,16 +307,17 @@ footer p { font-size:0.78rem; color:#6b7280; }
       </div>
     </div>
 
-    <!-- NATURE VILLAGE -->
+    <!-- NATURE & VILLAGE -->
     <div class="pack-card" id="card-nature">
-      <div class="card-slideshow">
+      <div class="card-slideshow" onclick="openLightbox(this)">
         <div class="card-slide active"><img src="nature.png" alt="Nature Village Pack" /><div class="slide-label">Nature &amp; Village Pack</div></div>
+        <div class="zoom-hint">🔍 Click to zoom</div>
         <div class="card-dots"><button class="card-dot active"></button></div>
       </div>
       <div class="card-body">
         <span class="card-tag">// Asset Pack</span>
         <div class="card-title">Nature &amp; Village Pack</div>
-        <div class="card-desc">Complete nature and village asset collection — trees, rocks, mountains, fountain, buildings, chests, flowers and more. Everything you need to build a world.</div>
+        <div class="card-desc">Complete nature and village assets — trees, rocks, mountains, fountain, buildings, chests and flowers.</div>
         <div class="card-footer">
           <div class="card-price">200 <small>Robux</small></div>
           <a href="#contact" class="buy-btn">Buy Now</a>
@@ -299,7 +330,7 @@ footer p { font-size:0.78rem; color:#6b7280; }
       <div class="coming-soon-inner">
         <div class="icon">🔧</div>
         <h3>More packs coming soon</h3>
-        <p>Snow Map, Japan Pack, Cars and more!</p>
+        <p>Snow Map, Japan Nature, Cars, Magic Props and more!</p>
       </div>
     </div>
 
@@ -325,7 +356,7 @@ footer p { font-size:0.78rem; color:#6b7280; }
     <p>To purchase or ask questions, contact me directly. I respond fast!</p>
     <div class="contact-links">
       <a href="https://discord.gg/RyrwZkH3" target="_blank" class="contact-link">💬 Discord Server</a>
-      <a href="/cdn-cgi/l/email-protection#b2d4c0d3dcd7c1d7c2d3c0ddc4dbd183f2d5dfd3dbde9cd1dddf" class="contact-link">📧 <span class="__cf_email__" data-cfemail="ea8c988b848f998f9a8b98859c8389dbaa8d878b8386c4898587">[email&#160;protected]</span></a>
+      <a href="mailto:franeseparovic1@gmail.com" class="contact-link">📧 franeseparovic1@gmail.com</a>
     </div>
   </div>
 </section>
@@ -336,30 +367,51 @@ footer p { font-size:0.78rem; color:#6b7280; }
   <p>Not affiliated with Roblox Corporation.</p>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 var slides = {};
-
-function initSlide(name) {
-  slides[name] = 0;
-}
 
 function goSlide(name, idx) {
   var card = document.getElementById('card-' + name);
   var allSlides = card.querySelectorAll('.card-slide');
   var allDots = card.querySelectorAll('.card-dot');
-  allSlides[slides[name]].classList.remove('active');
-  if (allDots[slides[name]]) allDots[slides[name]].classList.remove('active');
+  if(allSlides[slides[name]]) allSlides[slides[name]].classList.remove('active');
+  if(allDots[slides[name]]) allDots[slides[name]].classList.remove('active');
   slides[name] = idx;
-  allSlides[idx].classList.add('active');
-  if (allDots[idx]) allDots[idx].classList.add('active');
+  if(allSlides[idx]) allSlides[idx].classList.add('active');
+  if(allDots[idx]) allDots[idx].classList.add('active');
 }
 
 function nextSlide(name) {
   var card = document.getElementById('card-' + name);
   var count = card.querySelectorAll('.card-slide').length;
+  if(!slides[name]) slides[name] = 0;
   goSlide(name, (slides[name] + 1) % count);
 }
 
 function prevSlide(name) {
   var card = document.getElementById('card-' + name);
-  var count = card.querySelectorAll('.card-slide').len
+  var count = card.querySelectorAll('.card-slide').length;
+  if(!slides[name]) slides[name] = 0;
+  goSlide(name, (slides[name] - 1 + count) % count);
+}
+
+['forest','ice','desert','island','weapons','japanprops','banners','nature'].forEach(function(n){ slides[n]=0; });
+setInterval(function(){ nextSlide('forest'); }, 4000);
+setInterval(function(){ nextSlide('ice'); }, 4500);
+
+// Lightbox
+function openLightbox(el) {
+  var activeImg = el.querySelector('.card-slide.active img');
+  if(!activeImg) return;
+  document.getElementById('lightbox-img').src = activeImg.src;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeLightbox(); });
+</script>
+</body>
+</html>
