@@ -343,6 +343,24 @@ footer p { font-size:0.78rem; color:#6b7280; }
       </div>
     </div>
 
+    <!-- PETS PACK -->
+    <div class="pack-card" id="card-pets">
+      <div class="card-slideshow" onclick="openLightbox(this)">
+        <div class="card-slide active"><img src="pets.png" alt="Pets Pack" /><div class="slide-label">Pets Pack</div></div>
+        <div class="zoom-hint">🔍 Click to zoom</div>
+        <div class="card-dots"><button class="card-dot active"></button></div>
+      </div>
+      <div class="card-body">
+        <span class="card-tag">// Pets Pack</span>
+        <div class="card-title">Pets Pack</div>
+        <div class="card-desc">Cute collection of low-poly pets — cube animals, slimes, creatures and more. Perfect for pet simulator or adventure games.</div>
+        <div class="card-footer">
+          <div class="card-price">200 <small>Robux</small></div>
+          <a href="#contact" class="buy-btn">Buy Now</a>
+        </div>
+      </div>
+    </div>
+
     <!-- COMING SOON -->
     <div class="coming-soon">
       <div class="coming-soon-inner">
@@ -374,7 +392,7 @@ footer p { font-size:0.78rem; color:#6b7280; }
     <p>To purchase or ask questions, contact me directly. I respond fast!</p>
     <div class="contact-links">
       <a href="https://discord.gg/RyrwZkH3" target="_blank" class="contact-link">💬 Discord Server</a>
-      <a href="mailto:franeseparovic1@gmail.com" class="contact-link">📧 franeseparovic1@gmail.com</a>
+      <a href="/cdn-cgi/l/email-protection#0b6d796a656e786e7b6a79647d62683a4b6c666a626725686466" class="contact-link">📧 <span class="__cf_email__" data-cfemail="432531222d2630263322312c352a207203242e222a2f6d202c2e">[email&#160;protected]</span></a>
     </div>
   </div>
 </section>
@@ -385,7 +403,7 @@ footer p { font-size:0.78rem; color:#6b7280; }
   <p>Not affiliated with Roblox Corporation.</p>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 var slides = {};
 
 function goSlide(name, idx) {
@@ -423,13 +441,4 @@ function openLightbox(el) {
   if(!activeImg) return;
   document.getElementById('lightbox-img').src = activeImg.src;
   document.getElementById('lightbox').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeLightbox() {
-  document.getElementById('lightbox').classList.remove('open');
-  document.body.style.overflow = '';
-}
-document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeLightbox(); });
-</script>
-</body>
-</html>
+  document.body.style.overflow = 'hidd
